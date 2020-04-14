@@ -1,0 +1,13 @@
+{
+  "name": "ampUp's apidocs",
+  "version": "0.3.1",
+  "description": "Documentation for ampUp's APIs",
+  "title": "ampUp's apidocs",
+  "url" : "http://localhost:6969",
+  "sampleUrl": "http://localhost:6969",
+  "template": {
+    "withCompare": true,
+    "withGenerator": true,
+    "aloneDisplay": false
+  }
+}

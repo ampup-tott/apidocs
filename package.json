@@ -1,0 +1,15 @@
+{
+  "name": "apidocs",
+  "version": "1.0.0",
+  "description": "Documentation for ampUp's APIs",
+  "main": "index.html",
+  "scripts": {
+    "build": "npx apidoc -i lambda -o build && cp ./build/api_*.js ./src"
+  },
+  "repository": "git@github.com:ampup-tott/apidocs.git",
+  "author": "Abel Tran <ampup.tott@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "apidoc": "^0.20.1"
+  }
+}
