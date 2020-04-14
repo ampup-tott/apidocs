@@ -11,10 +11,10 @@ define({
     "aloneDisplay": false
   },
   "defaultVersion": "0.0.0",
-  "apidoc": "0.3.1",
+  "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2020-04-14T15:42:42.785Z",
+    "time": "2020-04-14T23:56:11.682Z",
     "url": "http://apidocjs.com",
     "version": "0.20.1"
   }
