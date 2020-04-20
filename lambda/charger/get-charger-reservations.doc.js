@@ -1,38 +1,30 @@
 /**
- * @api {}  _
+ * @api {GET} /chargers/:id/reservations Get Charger Schedules Reservations
  * @apiVersion 0.3.1
- * @apiName _
+ * @apiName Get Charger Schedules Reservations
  * @apiGroup CHARGER
  * @apiPermission user
- * @apiDescription _
+ * @apiDescription Get Charger Schedules Reservations
  * @apiHeader {String} Authorization The token can be generated from your user profile.
- * @apiHeaderExample {Header} Header-Example
- *   "Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjMxNCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTU4ODEyNTY5MywiaWF0IjoxNTg1NTMzNjkzfQ.xhd_rZuo295gwUIhs3GR1QqG8jiXlqnH4sOoAY__T1A"
- * @apiParam {}
- * @apiParamExample {json} Param Example
-
+ * @apiHeaderExample {String} Header Example
+ *   'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'
+ * @apiParam {number} id The id of Charger
+ * @apiParamExample {json} Params Example
+ *   {
+ *     "id": 6722
+ *   }
  * @apiExample {curl} Curl example
-
+ *  curl --request GET \
+ *     --url http://localhost:6969/chargers/6722/reservations \
+ *     --header 'content-type: application/json' \
+ *     --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \
  * @apiSuccess {String} status <code>OK</code>
- * @apiSuccess {array} data
- * @apiSuccess {JSON} Success Example
-
- * 
+ * @apiSuccess {json} data The data returned.
+ * @apiSuccessExample {json} Success Example
+ *   {
+ *     "status": "OK",
+ *     "data": []
+ *   }
  * @apiError {String} status <code>FAIL</code>
  * @apiError {String} reason The cause of Error.
- * @apiErrorExample Error Example 1
- *   {
- *     "status": "FAIL",
- *     "reason": "" 
- *   }
- * @apiErrorExample Error Example 2
- *   {
- *     "status": "FAIL",
- *     "reason": "" 
- *   }
- * @apiErrorExample Error Example 3
- *   {
- *     "status": "FAIL",
- *     "reason": ""
- *   }
  */
