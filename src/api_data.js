@@ -7814,6 +7814,3091 @@ define({ "api": [
     ]
   },
   {
+    "type": "GET",
+    "url": "/places/4918/check-charge-now",
+    "title": "Check Charge Now",
+    "version": "0.3.1",
+    "name": "Check_Charge_Now",
+    "group": "PLACE",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "description": "<p>Check Charge Now</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The token can be generated from your user profile.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'",
+          "type": "String"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "place_id",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Params Example",
+          "content": "{\n  \"place_id\": 4918\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Curl example",
+        "content": "curl --request GET \\\n   --url http://localhost:6969/places/:id/check-charge-now \\\n   --header 'content-type: application/json' \\\n   --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \\",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>OK</code></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>The data returned.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Example",
+          "content": "{\n  \"status\": \"OK\",\n  \"data\": true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>FAIL</code></p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>The cause of Error.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error Example 1",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Missing parameter: place_id\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 2",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Charge Now function don't support public charger\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 3",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Place not found\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 4",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"All stalls are in use. Please try a reservation.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "lambda/place/check-charge-now.js",
+    "groupTitle": "PLACE",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:6969/places/4918/check-charge-now"
+      }
+    ]
+  },
+  {
+    "type": "GET",
+    "url": "/places/:place_id/check-restricted-slot-with-access-code",
+    "title": "Check Restrict Slot With Access Code",
+    "version": "0.3.1",
+    "name": "Check_Restrict_Slot_With_Access_Code",
+    "group": "PLACE",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "description": "<p>Check Restrict Slot With Access Code</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The token can be generated from your user profile.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'",
+          "type": "String"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "place_id",
+            "description": "<p>The id of place</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "day_order",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "date",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "access_code",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Params Example",
+          "content": "{\n  \"place_id\": 4918,\n  \"day_order\": 6,\n  \"date\": \"18:30\",\n  \"access_code\": \"abc\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Curl example",
+        "content": "curl --request GET \\\n   --url http://localhost:6969/places/4918/check-restricted-slot-with-access-code?day_order=6&date=18:30&access_code=abc \\\n   --header 'content-type: application/json' \\\n   --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \\",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>OK</code></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>The data returned.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Example",
+          "content": "{\n  \"status\": \"OK\",\n  \"data\": {\n    \"time_start\": 1583539200,\n    \"time_end\": 1583622000,\n    \"day_orders\": [\n      0,\n      1,\n      2,\n      3,\n      4,\n      5,\n      6\n    ],\n    \"access_code_id\": 288,\n    \"access_code_price\": 5,\n    \"access_code\": \"abc\"\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>FAIL</code></p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>The cause of Error.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error Example 1",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Missing parameter: date\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 2",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Missing parameter: day_order\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 3",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Missing parameter: access_code\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 4",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Missing parameter: place_id\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 5",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Place not found\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 6",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Schedule is invalid\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "lambda/place/check-restricted-slot-with-access-code.js",
+    "groupTitle": "PLACE",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:6969/places/:place_id/check-restricted-slot-with-access-code"
+      }
+    ]
+  },
+  {
+    "type": "POST",
+    "url": "/places/4918/access-restriction",
+    "title": "Create Access Restriction",
+    "version": "0.3.1",
+    "name": "Create_Access_Restriction",
+    "group": "PLACE",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "description": "<p>Create Access Restriction</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The token can be generated from your user profile.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'",
+          "type": "String"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "place_id",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "object",
+            "optional": false,
+            "field": "schedules",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Params Example",
+          "content": "{\n  \"place_id\": 4918,\n  \"schedules\": [\n    {\n      \"name\": \"jbl3\",\n      \"access_codes\": [\n        \"jbl3\",\n        \"sony3\"\n      ],\n      \"time_start\": \"12:00\",\n      \"time_end\": \"24:00\",\n      \"prices\": {\n        \"jbl2\": 17,\n        \"sony2\": 12\n      },\n      \"day_orders\": [\n        1,\n        3\n      ]\n    }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Curl example",
+        "content": "curl --request POST \\\n   --url http://localhost:6969/places/:place_id/access-restriction \\\n   --header 'content-type: application/json' \\\n   --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \\\n   --data '{\n     \"schedules\": [\n       {\n         \"name\": \"jbl3\",\n         \"access_codes\": [\n           \"jbl3\",\n           \"sony3\"\n         ],\n         \"time_start\": \"12:00\",\n         \"time_end\": \"24:00\",\n         \"prices\": {\n           \"jbl2\": 17,\n           \"sony2\": 12\n         },\n         \"day_orders\": [\n           1,\n           3\n         ]\n       }\n     ]\n   }",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>OK</code></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>The data returned.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Example",
+          "content": "{\n  \"status\": \"OK\",\n  \"data\": [\n    {\n      \"name\": \"jbl3\",\n      \"description\": null,\n      \"place_id\": 4918,\n      \"day_orders\": [\n        1,\n        3\n      ],\n      \"day_of_weeks\": [\n        \"Monday\",\n        \"Wednesday\"\n      ],\n      \"time_start\": 1587470400,\n      \"time_end\": 1587513600,\n      \"status\": 1,\n      \"created_at\": 1587442079,\n      \"updated_at\": 1587442079,\n      \"id\": 176,\n      \"codes\": [\n        {\n          \"access_restriction_id\": 176,\n          \"access_code\": \"jbl3\",\n          \"price\": null,\n          \"status\": 1,\n          \"created_at\": 1587442079,\n          \"updated_at\": 1587442079,\n          \"id\": 317\n        },\n        {\n          \"access_restriction_id\": 176,\n          \"access_code\": \"sony3\",\n          \"price\": null,\n          \"status\": 1,\n          \"created_at\": 1587442079,\n          \"updated_at\": 1587442079,\n          \"id\": 318\n        }\n      ]\n    }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>FAIL</code></p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>The cause of Error.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error Example 1",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Missing parameter: name\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 2",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Invalid parameter: prices\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 3",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Invalid parameter: access_codes\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 4",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Day order must be a value of 0..6!\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 5",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Invalid parameter values: time_start and/or time_end!\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 6",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Invalid parameter values: time_start and/or time_end!\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 7",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Access code has existed at this time frame on the selected days. Please choose a different code or a different time frame.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "lambda/place/create-access-restriction.js",
+    "groupTitle": "PLACE",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:6969/places/4918/access-restriction"
+      }
+    ]
+  },
+  {
+    "type": "POST",
+    "url": "/places",
+    "title": "Create Place",
+    "version": "0.3.1",
+    "name": "Create_Place",
+    "group": "PLACE",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "description": "<p>Create Place</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The token can be generated from your user profile.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'",
+          "type": "String"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "name",
+            "description": "<p>The name of Place</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "address",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "phone",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "lat",
+            "description": "<p>The latitude</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "lng",
+            "description": "<p>The longitude</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "user_id",
+            "description": "<p>The id of user</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "keywords",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "object",
+            "optional": false,
+            "field": "data",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Params Example",
+          "content": "{\n  \"name\": \"Place #1\",\n  \"address\": \"1648 Vo Van Kiet Street\",\n  \"phone\": \"123-345-6677\",\n  \"lat\": 10.7297857,\n  \"lng\": 106.6241775,\n  \"user_id\": 1,\n  \"keywords\": \"\",\n  \"data\": null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Curl example",
+        "content": "curl --request POST \\\n   --url http://localhost:6969/places \\\n   --header 'content-type: application/json' \\\n   --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \\\n   --data '{\n     \"name\": \"Place #1\",\n     \"address\": \"1648 Vo Van Kiet Street\",\n     \"phone\": \"123-345-6677\",\n     \"lat\": 10.7297857,\n     \"lng\": 106.6241775,\n     \"user_id\": 1,\n     \"keywords\": \"\",\n     \"data\": null\n   }",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>OK</code></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>The data returned.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Example",
+          "content": "{\n  \"status\": \"OK\",\n  \"data\": {\n    \"name\": \"Place #1\",\n    \"address\": \"1648 Vo Van Kiet Street\",\n    \"phone\": \"123-345-6677\",\n    \"lat\": 10.7297857,\n    \"lng\": 106.6241775,\n    \"user_id\": 1,\n    \"keywords\": \"\",\n    \"status\": 1,\n    \"data\": null,\n    \"created_at\": 1587441305,\n    \"id\": 4959,\n    \"updated_at\": null,\n    \"coordinate\": null,\n    \"notes\": null,\n    \"plugshare_place_id\": null,\n    \"offline\": null,\n    \"rating\": 0,\n    \"reviews\": null,\n    \"created_by\": null,\n    \"updated_by\": null,\n    \"verified\": true,\n    \"donated\": false,\n    \"protocol\": false,\n    \"host_info\": {\n      \"id\": 1,\n      \"name\": \"Khanh Tran\",\n      \"email\": \"thkhanh@gmail.com\",\n      \"phone\": \"0988967911\",\n      \"avatar\": \"https://s3.amazonaws.com/uifaces/faces/twitter/bartoszdawydzik/128.jpg\"\n    }\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>FAIL</code></p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>The cause of Error.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error Example 1",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Please enter your station name!\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 2",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"What is your station's address?\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 3",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Please provive the phone number!\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 4",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Missing parameter: lat or lng\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 5",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Missing parameter: user_id\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "lambda/place/create-place.js",
+    "groupTitle": "PLACE",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:6969/places"
+      }
+    ]
+  },
+  {
+    "type": "POST",
+    "url": "/places-photos",
+    "title": "Create Place Photo",
+    "version": "0.3.1",
+    "name": "Create_Place_Photo",
+    "group": "PLACE",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "description": "<p>Create Place Photo</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The token can be generated from your user profile.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'",
+          "type": "String"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "place_id",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "array",
+            "optional": false,
+            "field": "photos",
+            "description": "<p>List of object data base64</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Params Example",
+          "content": "{\n  \"place_id\": 4918,\n  \"photos\": [\n    {\n      \"data\": \"data:image/png;base64,[base64]\"\n    }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Curl example",
+        "content": "curl --request POST \\\n   --url http://localhost:6969/places-photos \\\n   --header 'content-type: application/json' \\\n   --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \\\n   --data '{\n     \"place_id\": 4918,\n     \"photos\": [\n       {\n         \"data\": \"data:image/png;base64,[base64]\"\n       }\n     ]\n   }",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>OK</code></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>The data returned.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Example",
+          "content": "{\n  \"status\": \"OK\",\n  \"data\": [\n    {\n      \"place_id\": 4918,\n      \"photo_url\": \"https://s3.amazonaws.com/ampup-dev/place_photos/4689/2bS9WtT0.png\",\n      \"status\": 1,\n      \"created_at\": \"1587441667\",\n      \"id\": 733,\n      \"updated_at\": null\n    }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>FAIL</code></p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>The cause of Error.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error Example 1",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Missing parameter: place_id!\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 2",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"There is no photo to save!\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 3",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Place was not found!\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "lambda/place/create-place-photo.js",
+    "groupTitle": "PLACE",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:6969/places-photos"
+      }
+    ]
+  },
+  {
+    "type": "DELETE",
+    "url": "/places/:place_id/access-restriction",
+    "title": "Delete Access Code",
+    "version": "0.3.1",
+    "name": "Delete_Access_Code",
+    "group": "PLACE",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "description": "<p>Delete Access Code</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The token can be generated from your user profile.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'",
+          "type": "String"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "place_id",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "access_code_id",
+            "description": "<p>The id of access code</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Params Example",
+          "content": "{\n  \"place_id\": 4918,\n  \"access_code_id\": 179\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Curl example",
+        "content": "curl --request DELETE \\\n   --url http://localhost:6969/places/4918/access-restriction?access_code_id=179 \\\n   --header 'content-type: application/json' \\\n   --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \\",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>OK</code></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>The data returned.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Example",
+          "content": "{\n  \"status\": \"OK\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>FAIL</code></p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>The cause of Error.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error Example",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Cannot read property '$query' of undefined\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "lambda/place/delete-my-access-code.js",
+    "groupTitle": "PLACE",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:6969/places/:place_id/access-restriction"
+      }
+    ]
+  },
+  {
+    "type": "DELETE",
+    "url": "/places/:place_id/access-restriction",
+    "title": "Delete Access Restriction",
+    "version": "0.3.1",
+    "name": "Delete_Access_Restriction",
+    "group": "PLACE",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "description": "<p>Delete Access Restriction</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The token can be generated from your user profile.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'",
+          "type": "String"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "place_id",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "access_restriction_id",
+            "description": "<p>The id of access restriction</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Params Example",
+          "content": "{\n  \"place_id\": 4918,\n  \"access_restriction_id\": 179\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Curl example",
+        "content": "curl --request DELETE \\\n   --url http://localhost:6969/places/4918/access-restriction?access_restriction_id=179 \\\n   --header 'content-type: application/json' \\\n   --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \\",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>OK</code></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>The data returned.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Example",
+          "content": "{\n  \"status\": \"OK\",\n  \"data\": {\n    \"status\": 0,\n    \"updated_at\": 1587442756,\n    \"id\": 176,\n    \"place_id\": 4918,\n    \"day_orders\": [\n      1,\n      3\n    ],\n    \"day_of_weeks\": [\n      \"Monday\",\n      \"Wednesday\"\n    ],\n    \"time_start\": 1587470400,\n    \"time_end\": 1587513600,\n    \"created_at\": 1587442079,\n    \"name\": \"jbl3\",\n    \"description\": null\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>FAIL</code></p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>The cause of Error.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error Example 1",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Missing or invalid parameter: access_restriction_id\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 2",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"The access restriction not found!\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "lambda/place/delete-access-restriction.js",
+    "groupTitle": "PLACE",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:6969/places/:place_id/access-restriction"
+      }
+    ]
+  },
+  {
+    "type": "DELETE",
+    "url": "/places/:place_id/access-restriction",
+    "title": "Delete Access Restriction",
+    "version": "0.3.1",
+    "name": "Delete_Access_Restriction",
+    "group": "PLACE",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "description": "<p>Delete Access Restriction</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The token can be generated from your user profile.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'",
+          "type": "String"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "place_id",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "access_restriction_id",
+            "description": "<p>The id of access restriction</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Params Example",
+          "content": "{\n  \"place_id\": 4918\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Curl example",
+        "content": "curl --request DELETE \\\n   --url http://localhost:6969/places/4918/access-restriction \\\n   --header 'content-type: application/json' \\\n   --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \\",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>OK</code></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>The data returned.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Example",
+          "content": "{\n  \"status\": \"OK\",\n  \"data\": {\n    \"status\": 0,\n    \"updated_at\": 1587442756,\n    \"id\": 176,\n    \"place_id\": 4918,\n    \"day_orders\": [\n      1,\n      3\n    ],\n    \"day_of_weeks\": [\n      \"Monday\",\n      \"Wednesday\"\n    ],\n    \"time_start\": 1587470400,\n    \"time_end\": 1587513600,\n    \"created_at\": 1587442079,\n    \"name\": \"jbl3\",\n    \"description\": null\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>FAIL</code></p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>The cause of Error.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error Example 1",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Missing or invalid parameter: access_restriction_id\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 2",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"The access restriction not found!\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "lambda/place/get-access-restriction.js",
+    "groupTitle": "PLACE",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:6969/places/:place_id/access-restriction"
+      }
+    ]
+  },
+  {
+    "type": "DELETE",
+    "url": "/places/:id",
+    "title": "Delete Place",
+    "version": "0.3.1",
+    "name": "Delete_Place",
+    "group": "PLACE",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "description": "<p>Delete Place</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The token can be generated from your user profile.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'",
+          "type": "String"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>The id of place</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Params Example",
+          "content": "{\n  \"id\": 4959\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Curl example",
+        "content": "curl --request DELETE \\\n   --url http://localhost:6969/places/4959 \\\n   --header 'content-type: application/json' \\\n   --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \\",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>OK</code></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>The data returned.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Example",
+          "content": "{\n  \"status\": \"OK\",\n  \"data\": {\n    \"name\": \"Place #1\",\n    \"address\": \"1648 Vo Van Kiet Street\",\n    \"phone\": \"123-345-6677\",\n    \"lat\": 10.7297857,\n    \"lng\": 106.6241775,\n    \"user_id\": 1,\n    \"keywords\": \"\",\n    \"status\": -1,\n    \"data\": null,\n    \"created_at\": 1587441305,\n    \"id\": 4959,\n    \"updated_at\": null,\n    \"coordinate\": null,\n    \"notes\": null,\n    \"plugshare_place_id\": null,\n    \"offline\": null,\n    \"rating\": 0,\n    \"reviews\": null,\n    \"created_by\": null,\n    \"updated_by\": null,\n    \"verified\": true,\n    \"donated\": false,\n    \"protocol\": false,\n    \"host_info\": {\n      \"id\": 1,\n      \"name\": \"Khanh Tran\",\n      \"email\": \"thkhanh@gmail.com\",\n      \"phone\": \"0988967911\",\n      \"avatar\": \"https://s3.amazonaws.com/uifaces/faces/twitter/bartoszdawydzik/128.jpg\"\n    }\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>FAIL</code></p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>The cause of Error.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error Example 1",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Missing parameter: id\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 2",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"There are reservations on this charger currently. Please cancel those reservations before deleting charger.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "lambda/place/delete-place.js",
+    "groupTitle": "PLACE",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:6969/places/:id"
+      }
+    ]
+  },
+  {
+    "type": "DELETE",
+    "url": "/place-photos/:id",
+    "title": "Delete Place Photo",
+    "version": "0.3.1",
+    "name": "Delete_Place_Photo",
+    "group": "PLACE",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "description": "<p>Delete Place Photo</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The token can be generated from your user profile.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'",
+          "type": "String"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>The id of Photo</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Params Example",
+          "content": "{\n  \"id\": 733\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Curl example",
+        "content": "curl --request DELETE \\\n   --url http://localhost:6969/place-photos/733 \\\n   --header 'content-type: application/json' \\\n   --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \\",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>OK</code></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>The data returned.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Example",
+          "content": "{\n  \"status\": \"OK\",\n  \"data\": {\n    \"status\": 0,\n    \"updated_at\": \"1587443322\",\n    \"id\": 733,\n    \"place_id\": 4689,\n    \"photo_url\": \"https://s3.amazonaws.com/ampup-dev/place_photos/4689/2bS9WtT0.png\",\n    \"created_at\": \"1587441667\"\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>FAIL</code></p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>The cause of Error.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error Example",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Place Id was missing or invalid!\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "lambda/place/delete-place-photo.js",
+    "groupTitle": "PLACE",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:6969/place-photos/:id"
+      }
+    ]
+  },
+  {
+    "type": "GET",
+    "url": "/get-my-access-codes",
+    "title": "Get Access Code",
+    "version": "0.3.1",
+    "name": "Get_Access_Code",
+    "group": "PLACE",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "description": "<p>Get Access Code</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The token can be generated from your user profile.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'",
+          "type": "String"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Curl example",
+        "content": "curl --request GET \\\n   --url http://localhost:6969/get-my-access-codes \\\n   --header 'content-type: application/json' \\\n   --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \\",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>OK</code></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>The data returned.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Example",
+          "content": "{\n  \"status\": \"OK\",\n  \"data\": [\n    {\n      \"access_code_id\": 307,\n      \"access_code\": \"1234\",\n      \"price\": 0,\n      \"place_id\": 4919,\n      \"place_name\": \"ampUp Vietnam\",\n      \"place_address\": \"290 An Dương Vương, Phường 4, Quận 5, Hồ Chí Minh, Việt Nam\",\n      \"place_photo\": \"https://s3.amazonaws.com/ampup-dev/place_photos/4919/81EB2cCN.jpeg\",\n      \"restriction_id\": 169,\n      \"time_start\": 1586448000,\n      \"time_end\": 1586473200,\n      \"day_orders\": [\n        1,\n        2,\n        3,\n        4\n      ],\n      \"day_of_weeks\": [\n        \"Monday\",\n        \"Tuesday\",\n        \"Wednesday\",\n        \"Thursday\"\n      ]\n    }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>FAIL</code></p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>The cause of Error.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "lambda/place/get-my-access-codes.js",
+    "groupTitle": "PLACE",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:6969/get-my-access-codes"
+      }
+    ]
+  },
+  {
+    "type": "GET",
+    "url": "/:place_id/get-all-access-codes",
+    "title": "Get All Access Code",
+    "version": "0.3.1",
+    "name": "Get_All_Access_Code",
+    "group": "PLACE",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "description": "<p>Get All Access Code</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The token can be generated from your user profile.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'",
+          "type": "String"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "place_id",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Params Example",
+          "content": "{\n  \"place_id\": 4919\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Curl example",
+        "content": "curl --request GET \\\n   --url http://localhost:6969/4919/get-all-access-codes \\\n   --header 'content-type: application/json' \\\n   --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \\",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>OK</code></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>The data returned.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Example",
+          "content": "{\n  \"status\": \"OK\",\n  \"data\": [\n    {\n      \"access_code_id\": 307,\n      \"access_code\": \"1234\",\n      \"price\": 0,\n      \"place_id\": 4919,\n      \"place_name\": \"ampUp Vietnam\",\n      \"place_address\": \"290 An Dương Vương, Phường 4, Quận 5, Hồ Chí Minh, Việt Nam\",\n      \"restriction_id\": 169,\n      \"time_start\": 1586448000,\n      \"time_end\": 1586473200,\n      \"day_orders\": [\n        1,\n        2,\n        3,\n        4\n      ],\n      \"day_of_weeks\": [\n        \"Monday\",\n        \"Tuesday\",\n        \"Wednesday\",\n        \"Thursday\"\n      ]\n    },\n    {\n      \"access_code_id\": 306,\n      \"access_code\": \"121\",\n      \"price\": 3,\n      \"place_id\": 4919,\n      \"place_name\": \"ampUp Vietnam\",\n      \"place_address\": \"290 An Dương Vương, Phường 4, Quận 5, Hồ Chí Minh, Việt Nam\",\n      \"restriction_id\": 168,\n      \"time_start\": 1586318400,\n      \"time_end\": 1586374200,\n      \"day_orders\": [\n        0,\n        1,\n        2,\n        3,\n        4,\n        5,\n        6\n      ],\n      \"day_of_weeks\": [\n        \"Sunday\",\n        \"Monday\",\n        \"Tuesday\",\n        \"Wednesday\",\n        \"Thursday\",\n        \"Friday\",\n        \"Saturday\"\n      ]\n    }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>FAIL</code></p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>The cause of Error.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "lambda/place/get-all-access-codes.js",
+    "groupTitle": "PLACE",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:6969/:place_id/get-all-access-codes"
+      }
+    ]
+  },
+  {
+    "type": "GET",
+    "url": "/places/:id/charger",
+    "title": "Get Chargers",
+    "version": "0.3.1",
+    "name": "Get_Chargers",
+    "group": "PLACE",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "description": "<p>Get Chargers</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The token can be generated from your user profile.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'",
+          "type": "String"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>The id of Place</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "boolean",
+            "optional": false,
+            "field": "is_plug",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Params Example",
+          "content": "{\n  \"id\": 4918,\n  \"is_plug\": true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Curl example",
+        "content": "curl --request GET \\\n   --url http://localhost:6969/places/4918/charger?is_plug=true \\\n   --header 'content-type: application/json' \\\n   --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \\",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>OK</code></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>The data returned.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Example",
+          "content": "{\n  \"status\": \"OK\",\n  \"data\": [\n    {\n      \"id\": 6734,\n      \"name\": \"Little 2\",\n      \"level\": 3,\n      \"is_unpluggable\": true,\n      \"plug_type\": \"J1772\",\n      \"outlet_id\": 8511,\n      \"next_reservation\": null\n    },\n    {\n      \"id\": 6734,\n      \"name\": \"Little 2\",\n      \"level\": 3,\n      \"is_unpluggable\": true,\n      \"plug_type\": \"CHAdeMO\",\n      \"outlet_id\": 8512,\n      \"next_reservation\": null\n    }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>FAIL</code></p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>The cause of Error.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "lambda/place/get-charger.js",
+    "groupTitle": "PLACE",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:6969/places/:id/charger"
+      }
+    ]
+  },
+  {
+    "type": "GET",
+    "url": "/places/:id",
+    "title": "Get Place",
+    "version": "0.3.1",
+    "name": "Get_Place",
+    "group": "PLACE",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "description": "<p>Get Place</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The token can be generated from your user profile.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'",
+          "type": "String"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>The id of place</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "boolean",
+            "optional": false,
+            "field": "is_public",
+            "description": "<p>is public station (place)?</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Params Example",
+          "content": "{\n  \"id\": 4918\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Curl example",
+        "content": "curl --request GET \\\n   --url http://localhost:6969/places/4918?is_public=false \\\n   --header 'content-type: application/json' \\\n   --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \\",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>OK</code></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>The data returned.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Example",
+          "content": "{\n  \"status\": \"OK\",\n  \"data\": {\n    \"source\": null,\n    \"id\": 4918,\n    \"lat\": 10.7517033,\n    \"lng\": 106.6558611,\n    \"place_name\": \"Tui test\",\n    \"place_address\": \"Đỗ Ngọc Thạnh, Phường 14, Quận 5, Saigon, Việt Nam\",\n    \"place_phone\": \"(XXX) XXX - XXX1\",\n    \"description\": null,\n    \"offline\": false,\n    \"reviews\": null,\n    \"verified\": true,\n    \"status\": 1,\n    \"prot\": false,\n    \"host_info\": {\n      \"id\": 4007,\n      \"name\": \"Tâm Tỏ Trần\",\n      \"email\": \"ampup.tott@gmail.com\",\n      \"phone\": \"035593388\",\n      \"avatar\": \"https://assets.pokemon.com/assets/cms2/img/pokedex/full/513.png\"\n    },\n    \"photos\": [\n      {\n        \"id\": 709,\n        \"photo_url\": \"https://s3.amazonaws.com/ampup-dev/place_photos/4918/kzPPyZJc.jpeg\"\n      }\n    ],\n    \"chargers\": [\n      {\n        \"id\": 6722,\n        \"name\": \"Litle\",\n        \"level\": 3,\n        \"price\": 0,\n        \"restricted\": null,\n        \"has_solar\": true,\n        \"offline\": false,\n        \"plugs\": [\n          {\n            \"outlet_id\": 8504,\n            \"power\": null,\n            \"type\": null,\n            \"name\": null,\n            \"level\": null,\n            \"photo\": null,\n            \"available\": true,\n            \"status\": \"AVAILABLE\"\n          }\n        ],\n        \"status\": \"AVAILABLE\",\n        \"access\": \"PUBLIC\",\n        \"pricing\": {\n          \"parking\": null,\n          \"charging\": [\n            0,\n            \"hr\"\n          ]\n        }\n      },\n      {\n        \"id\": 6734,\n        \"name\": \"Little 2\",\n        \"level\": 3,\n        \"price\": 0,\n        \"restricted\": true,\n        \"has_solar\": true,\n        \"offline\": false,\n        \"plugs\": [\n          {\n            \"outlet_id\": 8511,\n            \"power\": 6.6,\n            \"type\": 3,\n            \"name\": \"J1772\",\n            \"level\": 2,\n            \"photo\": \"https://s3.amazonaws.com/ampup-dev/car/outlet/Plug-Type-J1772-v1.png\",\n            \"available\": true,\n            \"status\": \"AVAILABLE\"\n          }\n        ],\n        \"status\": \"AVAILABLE\",\n        \"access\": \"RESTRICTED\",\n        \"pricing\": {\n          \"parking\": null,\n          \"charging\": [\n            0,\n            \"hr\"\n          ]\n        }\n      }\n    ],\n    \"bookmarked\": true,\n    \"place_address_full\": \"15 Đỗ Ngọc Thạnh, Phường 14, Quận 5, Saigon, Việt Nam\",\n    \"place_phone_full\": \"0355933881\"\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>FAIL</code></p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>The cause of Error.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error Example 1",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Missing parameter: id\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 2",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Place not found\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "lambda/place/get-place.js",
+    "groupTitle": "PLACE",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:6969/places/:id"
+      }
+    ]
+  },
+  {
+    "type": "GET",
+    "url": "/place-photos",
+    "title": "Get Place Photo",
+    "version": "0.3.1",
+    "name": "Get_Place_Photo",
+    "group": "PLACE",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "description": "<p>Get Place Photo</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The token can be generated from your user profile.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'",
+          "type": "String"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "place_id",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Params Example",
+          "content": "{\n  \"place_id\": 4919\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Curl example",
+        "content": "curl --request GET \\\n   --url http://localhost:6969/place-photos?place_id=4919 \\\n   --header 'content-type: application/json' \\\n   --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \\",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>OK</code></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>The data returned.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Example",
+          "content": "{\n  \"status\": \"OK\",\n  \"data\": [\n    {\n      \"id\": 709,\n      \"place_id\": 4918,\n      \"photo_url\": \"https://s3.amazonaws.com/ampup-dev/place_photos/4918/kzPPyZJc.jpeg\",\n      \"status\": 1,\n      \"created_at\": \"1584605424\",\n      \"updated_at\": null\n    }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>FAIL</code></p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>The cause of Error.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "lambda/place/get-place-photos.js",
+    "groupTitle": "PLACE",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:6969/place-photos"
+      }
+    ]
+  },
+  {
+    "type": "GET",
+    "url": "/places/:id",
+    "title": "Get Place V2",
+    "version": "0.3.1",
+    "name": "Get_Place_V2",
+    "group": "PLACE",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "description": "<p>Get Place</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The token can be generated from your user profile.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'",
+          "type": "String"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>The id of place</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "boolean",
+            "optional": false,
+            "field": "is_public",
+            "description": "<p>is public station (place)?</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Params Example",
+          "content": "{\n  \"id\": 4918\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Curl example",
+        "content": "curl --request GET \\\n   --url http://localhost:6969/places/4918?is_public=false \\\n   --header 'content-type: application/json' \\\n   --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \\",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>OK</code></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>The data returned.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Example",
+          "content": "{\n  \"status\": \"OK\",\n  \"data\": {\n    \"source\": null,\n    \"id\": 4918,\n    \"lat\": 10.7517033,\n    \"lng\": 106.6558611,\n    \"place_name\": \"Tui test\",\n    \"place_address\": \"Đỗ Ngọc Thạnh, Phường 14, Quận 5, Saigon, Việt Nam\",\n    \"place_phone\": \"(XXX) XXX - XXX1\",\n    \"description\": null,\n    \"offline\": false,\n    \"reviews\": null,\n    \"verified\": true,\n    \"status\": 1,\n    \"prot\": false,\n    \"host_info\": {\n      \"id\": 4007,\n      \"name\": \"Tâm Tỏ Trần\",\n      \"email\": \"ampup.tott@gmail.com\",\n      \"phone\": \"035593388\",\n      \"avatar\": \"https://assets.pokemon.com/assets/cms2/img/pokedex/full/513.png\"\n    },\n    \"photos\": [\n      {\n        \"id\": 709,\n        \"photo_url\": \"https://s3.amazonaws.com/ampup-dev/place_photos/4918/kzPPyZJc.jpeg\"\n      }\n    ],\n    \"chargers\": [\n      {\n        \"id\": 6722,\n        \"name\": \"Litle\",\n        \"level\": 3,\n        \"price\": 0,\n        \"restricted\": null,\n        \"has_solar\": true,\n        \"offline\": false,\n        \"plugs\": [\n          {\n            \"outlet_id\": 8504,\n            \"power\": null,\n            \"type\": null,\n            \"name\": null,\n            \"level\": null,\n            \"photo\": null,\n            \"available\": true,\n            \"status\": \"AVAILABLE\"\n          }\n        ],\n        \"status\": \"AVAILABLE\",\n        \"access\": \"PUBLIC\",\n        \"pricing\": {\n          \"parking\": null,\n          \"charging\": [\n            0,\n            \"hr\"\n          ]\n        }\n      },\n      {\n        \"id\": 6734,\n        \"name\": \"Little 2\",\n        \"level\": 3,\n        \"price\": 0,\n        \"restricted\": true,\n        \"has_solar\": true,\n        \"offline\": false,\n        \"plugs\": [\n          {\n            \"outlet_id\": 8511,\n            \"power\": 6.6,\n            \"type\": 3,\n            \"name\": \"J1772\",\n            \"level\": 2,\n            \"photo\": \"https://s3.amazonaws.com/ampup-dev/car/outlet/Plug-Type-J1772-v1.png\",\n            \"available\": true,\n            \"status\": \"AVAILABLE\"\n          }\n        ],\n        \"status\": \"AVAILABLE\",\n        \"access\": \"RESTRICTED\",\n        \"pricing\": {\n          \"parking\": null,\n          \"charging\": [\n            0,\n            \"hr\"\n          ]\n        }\n      }\n    ],\n    \"bookmarked\": true,\n    \"place_address_full\": \"15 Đỗ Ngọc Thạnh, Phường 14, Quận 5, Saigon, Việt Nam\",\n    \"place_phone_full\": \"0355933881\"\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>FAIL</code></p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>The cause of Error.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error Example 1",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Missing parameter: id\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 2",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Place not found\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "lambda/place/get-place-v2.js",
+    "groupTitle": "PLACE",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:6969/places/:id"
+      }
+    ]
+  },
+  {
+    "type": "GET",
+    "url": "/places",
+    "title": "Get Places",
+    "version": "0.3.1",
+    "name": "Get_Places",
+    "group": "PLACE",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "description": "<p>Get Places</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The token can be generated from your user profile.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'",
+          "type": "String"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "connectors",
+            "description": "<p>The list ids of connectors</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Params Example",
+          "content": "{\n  \"connectors\": \"3,4\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Curl example",
+        "content": "curl --request GET \\\n   --url http://localhost:6969/places?connectors=3%2C4 \\\n   --header 'content-type: application/json' \\\n   --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \\",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>OK</code></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>The data returned.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Example",
+          "content": "{\n  \"status\": \"OK\",\n  \"data\": [\n    {\n      \"place_id\": 126,\n      \"place_name\": \"NTMK\",\n      \"place_address\": \"275 Điện Biên Phủ, Phường 7, Quận 3, Hồ Chí Minh, Vietnam\",\n      \"place_data\": {\n        \"description\": \"\"\n      },\n      \"lat\": 10.7789931,\n      \"lng\": 106.6872621,\n      \"user_id\": 18,\n      \"chargers\": [\n        {\n          \"charger_id\": 97,\n          \"charger_price\": 1.655,\n          \"charger_data\": {\n            \"instruction\": \"\"\n          },\n          \"plugs\": [\n            {\n              \"outlet_id\": 147,\n              \"available\": true,\n              \"connector_id\": 3,\n              \"connector_name\": \"J1772\",\n              \"connector_level\": 2,\n              \"connector_photo\": \"https://s3.amazonaws.com/ampup-dev/car/outlet/Plug-Type-J1772-v1.png\",\n              \"connector_power\": 6.6\n            },\n            {\n              \"outlet_id\": 149,\n              \"available\": true,\n              \"connector_id\": 4,\n              \"connector_name\": \"Nema 1450\",\n              \"connector_level\": 2,\n              \"connector_photo\": \"https://s3.amazonaws.com/ampup-dev/car/outlet/Plug-Type-Nema-1450-v1.png\",\n              \"connector_power\": 6.6\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>FAIL</code></p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>The cause of Error.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "lambda/place/get-places.js",
+    "groupTitle": "PLACE",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:6969/places"
+      }
+    ]
+  },
+  {
+    "type": "GET",
+    "url": "/search/places",
+    "title": "Get Places By Name",
+    "version": "0.3.1",
+    "name": "Get_Places_By_Name",
+    "group": "PLACE",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "description": "<p>Get Places By Name</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The token can be generated from your user profile.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'",
+          "type": "String"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "name",
+            "description": "<p>The name of Place</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Params Example",
+          "content": "{\n  \"name\": \"Tui\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Curl example",
+        "content": "curl --request GET \\\n   --url http://localhost:6969/search/places?name=Tui \\\n   --header 'content-type: application/json' \\\n   --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \\",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>OK</code></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>The data returned.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Example",
+          "content": "{\n  \"status\": \"OK\",\n  \"data\": [\n    {\n      \"id\": 4918,\n      \"name\": \"Tui test\",\n      \"address\": \"15 Đỗ Ngọc Thạnh, Phường 14, Quận 5, Saigon, Việt Nam\",\n      \"data\": {\n        \"price\": 0\n      },\n      \"lat\": 10.7517033,\n      \"lng\": 106.6558611,\n      \"user_id\": 4007,\n      \"chargers\": [\n        {\n          \"charger_id\": 6734,\n          \"charger_price\": 0,\n          \"charger_data\": {\n            \"instruction\": \"Free free free\"\n          },\n          \"plugs\": [\n            {\n              \"outlet_id\": 8511,\n              \"available\": true,\n              \"connector_id\": 3,\n              \"connector_name\": \"J1772\",\n              \"connector_level\": 2,\n              \"connector_photo\": \"https://s3.amazonaws.com/ampup-dev/car/outlet/Plug-Type-J1772-v1.png\",\n              \"connector_power\": 6.6\n            }\n          ]\n        },\n        {\n          \"charger_id\": 6722,\n          \"charger_price\": 0,\n          \"charger_data\": {\n            \"description\": \"Come in say Hi! \"\n          },\n          \"plugs\": [\n            {\n              \"outlet_id\": 8481,\n              \"available\": true,\n              \"connector_id\": 5,\n              \"connector_name\": \"CHAdeMO\",\n              \"connector_level\": 3,\n              \"connector_photo\": \"https://s3.amazonaws.com/ampup-dev/car/outlet/Plug-Type-CHAdeMO-v1.png\",\n              \"connector_power\": 50\n            },\n            {\n              \"outlet_id\": 8482,\n              \"available\": true,\n              \"connector_id\": 5,\n              \"connector_name\": \"CHAdeMO\",\n              \"connector_level\": 3,\n              \"connector_photo\": \"https://s3.amazonaws.com/ampup-dev/car/outlet/Plug-Type-CHAdeMO-v1.png\",\n              \"connector_power\": 50\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>FAIL</code></p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>The cause of Error.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "lambda/place/search-places.js",
+    "groupTitle": "PLACE",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:6969/search/places"
+      }
+    ]
+  },
+  {
+    "type": "GET",
+    "url": "/places/:place_id/restricted-schedule-settings",
+    "title": "Get Restricted Schedule Settings",
+    "version": "0.3.1",
+    "name": "Get_Restricted_Schedule_Settings",
+    "group": "PLACE",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "description": "<p>Get Restricted Schedule Settings</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The token can be generated from your user profile.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'",
+          "type": "String"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "place_id",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "day_order",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "date",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Params Example",
+          "content": "{\n  \"place_id\": 4918,\n  \"day_order\": 0,\n  \"date\": 1583600400\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Curl example",
+        "content": "curl --request GET \\\n   --url http://localhost:6969/places/4918/restricted-schedule-settings?day_order=0&date=1583600400 \\\n   --header 'content-type: application/json' \\\n   --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \\",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>OK</code></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>The data returned.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Example",
+          "content": "{\n  \"status\": \"OK\",\n  \"data\": [\n    {\n      \"id\": 1,\n      \"start\": 1583611200,\n      \"price\": 0,\n      \"is_remembered\": false,\n      \"access_code\": null\n    },\n    {\n      \"id\": 1,\n      \"start\": 1583613000,\n      \"price\": 0,\n      \"is_remembered\": false,\n      \"access_code\": null\n    },\n    {\n      \"id\": 2,\n      \"start\": 1583620200,\n      \"price\": 0,\n      \"is_remembered\": false,\n      \"access_code\": null\n    }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>FAIL</code></p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>The cause of Error.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error Example 1",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Missing parameter: date\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 2",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Missing parameter: day_order\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 3",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Missing parameter: place_id\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 4",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Place not found\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 5",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Schedule is invalid\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "lambda/place/get-restricted-schedule-setting.js",
+    "groupTitle": "PLACE",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:6969/places/:place_id/restricted-schedule-settings"
+      }
+    ]
+  },
+  {
+    "type": "GET",
+    "url": "/places/:place_id/restricted-schedule-settings-groupby",
+    "title": "Get Restricted Schedule Settings GroupBy",
+    "version": "0.3.1",
+    "name": "Get_Restricted_Schedule_Settings_GroupBy",
+    "group": "PLACE",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "description": "<p>Get Restricted Schedule Settings GroupBy</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The token can be generated from your user profile.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'",
+          "type": "String"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "place_id",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "day_order",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "date",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Params Example",
+          "content": "{\n  \"place_id\": 4918,\n  \"day_order\": 0,\n  \"date\": 1583600400\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Curl example",
+        "content": "curl --request GET \\\n   --url http://localhost:6969/places/4918/restricted-schedule-settings-groupby?day_order=0&date=1583600400 \\\n   --header 'content-type: application/json' \\\n   --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \\",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>OK</code></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>The data returned.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Example",
+          "content": "{\n  \"status\": \"OK\",\n  \"data\": [\n    {\n      \"id\": 157,\n      \"place_id\": 4918,\n      \"day_of_week\": \"Saturday\",\n      \"status\": 1,\n      \"created_at\": 1577176834,\n      \"updated_at\": 1577267052,\n      \"day_order\": 6,\n      \"time_start\": 1577232000,\n      \"time_end\": 1577314800,\n      \"access_code\": \"abc\",\n      \"price\": null\n    },\n    {\n      \"id\": 151,\n      \"place_id\": 4918,\n      \"day_of_week\": \"Sunday\",\n      \"status\": 1,\n      \"created_at\": 1577176834,\n      \"updated_at\": 1577267051,\n      \"day_order\": 0,\n      \"time_start\": 1577232000,\n      \"time_end\": 1577314800,\n      \"access_code\": \"abc\",\n      \"price\": null\n    }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>FAIL</code></p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>The cause of Error.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error Example 1",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Missing or invalid parameter: place_id\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "lambda/place/get-restricted-schedule-setting-groupby.js",
+    "groupTitle": "PLACE",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:6969/places/:place_id/restricted-schedule-settings-groupby"
+      }
+    ]
+  },
+  {
+    "type": "PUT",
+    "url": "/places/:id/offline",
+    "title": "Set Place Offline",
+    "version": "0.3.1",
+    "name": "Set_Place_Offline",
+    "group": "PLACE",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "description": "<p>Set Place Offline</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The token can be generated from your user profile.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'",
+          "type": "String"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "boolean",
+            "optional": false,
+            "field": "offline",
+            "description": "<p>is offline place?</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Params Example",
+          "content": "{\n  \"offline\": true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Curl example",
+        "content": "curl --request PUT \\\n   --url http://localhost:6969/places/6722/offline \\\n   --header 'content-type: application/json' \\\n   --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \\\n   --data '{\n     \"offline\": true\n   }",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>OK</code></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>The data returned.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Example",
+          "content": "{\n  \"status\": \"OK\",\n  \"data\": {\n    \"offline\": true,\n    \"status\": 0,\n    \"updated_at\": 1587383800,\n    \"updated_by\": 4007,\n    \"id\": 4918,\n    \"name\": \"Tui test\",\n    \"address\": \"15 Đỗ Ngọc Thạnh, Phường 14, Quận 5, Saigon, Việt Nam\",\n    \"lat\": 10.7517033,\n    \"lng\": 106.6558611,\n    \"user_id\": 4007,\n    \"keywords\": \"Tui Test, Do Ngoc Thanh, Abel\",\n    \"created_at\": 1584605422,\n    \"data\": {\n      \"price\": 0\n    },\n    \"coordinate\": null,\n    \"phone\": \"0355933881\",\n    \"notes\": null,\n    \"plugshare_place_id\": null,\n    \"rating\": 0,\n    \"reviews\": null,\n    \"created_by\": null,\n    \"verified\": true,\n    \"donated\": true,\n    \"protocol\": false\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>FAIL</code></p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>The cause of Error.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error Example 1",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Place not found\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "lambda/place/set-place-offline.js",
+    "groupTitle": "PLACE",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:6969/places/:id/offline"
+      }
+    ]
+  },
+  {
+    "type": "PUT",
+    "url": "/places/:id/offline",
+    "title": "Set Place Offline",
+    "version": "0.3.1",
+    "name": "Set_Place_Offline",
+    "group": "PLACE",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "description": "<p>Set Place Offline</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The token can be generated from your user profile.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'",
+          "type": "String"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "boolean",
+            "optional": false,
+            "field": "offline",
+            "description": "<p>is offline place?</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Params Example",
+          "content": "{\n  \"offline\": true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Curl example",
+        "content": "curl --request PUT \\\n   --url http://localhost:6969/places/6722/offline \\\n   --header 'content-type: application/json' \\\n   --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \\\n   --data '{\n     \"offline\": true\n   }",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>OK</code></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>The data returned.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Example",
+          "content": "{\n  \"status\": \"OK\",\n  \"data\": {\n    \"offline\": true,\n    \"status\": 0,\n    \"updated_at\": 1587383800,\n    \"updated_by\": 4007,\n    \"id\": 4918,\n    \"name\": \"Tui test\",\n    \"address\": \"15 Đỗ Ngọc Thạnh, Phường 14, Quận 5, Saigon, Việt Nam\",\n    \"lat\": 10.7517033,\n    \"lng\": 106.6558611,\n    \"user_id\": 4007,\n    \"keywords\": \"Tui Test, Do Ngoc Thanh, Abel\",\n    \"created_at\": 1584605422,\n    \"data\": {\n      \"price\": 0\n    },\n    \"coordinate\": null,\n    \"phone\": \"0355933881\",\n    \"notes\": null,\n    \"plugshare_place_id\": null,\n    \"rating\": 0,\n    \"reviews\": null,\n    \"created_by\": null,\n    \"verified\": true,\n    \"donated\": true,\n    \"protocol\": false\n  }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>FAIL</code></p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>The cause of Error.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error Example 1",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Place not found\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "lambda/place/update-place.js",
+    "groupTitle": "PLACE",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:6969/places/:id/offline"
+      }
+    ]
+  },
+  {
+    "type": "PUT",
+    "url": "/places/:place_id/access-restriction",
+    "title": "Update Restriction",
+    "version": "0.3.1",
+    "name": "Update_Restriction",
+    "group": "PLACE",
+    "permission": [
+      {
+        "name": "user"
+      }
+    ],
+    "description": "<p>Update Restriction</p>",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The token can be generated from your user profile.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Header Example",
+          "content": "'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U'",
+          "type": "String"
+        }
+      ]
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "place_id",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "object",
+            "optional": false,
+            "field": "schedules",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Params Example",
+          "content": "{\n  \"place_id\": 4918,\n  \"schedules\": [\n    {\n      \"name\": \"AR1\",\n      \"access_codes\": [\n        \"test\"\n      ],\n      \"time_start\": \"08:00\",\n      \"time_end\": \"17:00\",\n      \"prices\": {\n        \"thang\": 35\n      },\n      \"day_orders\": [\n        1,\n        3,\n        4\n      ],\n      \"access_restriction_id\": 10,\n      \"description\": \"....\"\n    }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Curl example",
+        "content": "curl --request PUT \\\n   --url http://localhost:6969/places/4918/access-restriction?place_id=4918 \\\n   --header 'content-type: application/json' \\\n   --header 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjU3MCwidXNlcl9pZCI6NDAwNywiZGV2aWNlX2lkIjoiTTE4MDZFN1RHIiwiZGV2aWNlX25hbWUiOiJSZWRtaSIsImV4cCI6MTY3MzMxMTUwMiwiaWF0IjoxNTg2OTExNTAyfQ.-uyOFkZ4SrGJYRIJ-Eec2ggfgUZJIzNMmb22zVJ-j1U' \\\n   --data '{\n     \"schedules\": [\n       {\n         \"name\": \"AR1\",\n         \"access_codes\": [\n           \"test\"\n         ],\n         \"time_start\": \"08:00\",\n         \"time_end\": \"17:00\",\n         \"prices\": {\n           \"thang\": 35\n         },\n         \"day_orders\": [\n           1,\n           3,\n           4\n         ],\n         \"access_restriction_id\": 10,\n         \"description\": \"....\"\n       }\n     ]\n   }",
+        "type": "curl"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>OK</code></p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "data",
+            "description": "<p>The data returned.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success Example",
+          "content": "{\n  \"status\": \"OK\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "status",
+            "description": "<p><code>FAIL</code></p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "reason",
+            "description": "<p>The cause of Error.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error Example 1",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Missing or invalid parameter: place_id\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 2",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Place not found or invalid parameter!\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 3",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Missing parameter: name\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 4",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Missing or invalid parameter: access_restriction_id\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 5",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Invalid parameter: prices\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 6",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Day order must be a value of 0..6!\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 7",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Invalid parameter values: time_start and/or time_end!\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error Example 8",
+          "content": "{\n  \"status\": \"FAIL\",\n  \"reason\": \"Access code has existed at this time frame on the selected days. Please choose a different code or a different time frame.\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "lambda/place/update-access-restriction.js",
+    "groupTitle": "PLACE",
+    "sampleRequest": [
+      {
+        "url": "http://localhost:6969/places/:place_id/access-restriction"
+      }
+    ]
+  },
+  {
     "type": "POST",
     "url": "/places/report-issue",
     "title": "Create Report Issue",
